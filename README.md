@@ -31,6 +31,7 @@ For another project, I needed a routable TypeScript-React application with acces
     2. [Prerendering mode](#vike-ssg)
     3. [Page Context](#vike-page-context)
 6. [Styling with Uno/Tailwind and TW Styled Components](#uno-tailwind)
+    1. [Theme Configuration](#uno-configuration)
 7. [Icons: lucide-react](#lucide)
 8. [Aliases](#aliases)
 9. [Troubleshooting](#troubleshooting)
@@ -245,7 +246,11 @@ export default tw.div<LayoutTwProps>`
 `
 ```
 
-See the full [uno.config.ts](https://github.com/richard-unterberg/statetrain/blob/master/uno.config.ts)
+### <a id="uno-configuration"></a>Configuring Theme Files like `tailwind.config.js`
+
+In uno.css similiar to the `tailwind.config` we have a `uno.config`, where you can set theme variables in the same manner:
+
+Currently used [uno.config.ts](https://github.com/richard-unterberg/statetrain/blob/master/uno.config.ts)
 
 ## <a id="aliases"></a>Aliases
 
@@ -259,9 +264,8 @@ import Something from '#components/Something'
 
 We must set and keep it in sync for vite (``vite.config.ts``) and your IDE (``tsconfig.json``)
 
-[``vite.config.ts``](https://github.com/richard-unterberg/statetrain/blob/master/vite.config.ts):
+``vite.config.ts``: <sup>[link](https://github.com/richard-unterberg/statetrain/blob/master/vite.config.ts)</sup>
 ```ts
-...viteConfig,
 resolve: {
   alias: {
     '#pages': path.resolve(__dirname, './pages/'),
@@ -272,9 +276,8 @@ resolve: {
 },
   ```
 
-[``tsconfig.json``](https://github.com/richard-unterberg/statetrain/blob/master/tsconfig.json):
+``tsconfig.json``: <sup>[link](https://github.com/richard-unterberg/statetrain/blob/master/tsconfig.json)</sup>
 ```json
-...tsConfig,
 "paths": {
   "#pages/*": ["pages/*"],
   "#components/*": ["./components/*"],
