@@ -35,8 +35,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '#tone': path.resolve(__dirname, './lib/tone/'),
-      '#renderer': path.resolve(__dirname, './renderer/'),
+      '#tone': path.resolve(__dirname, './tone/'),
       '#pages': path.resolve(__dirname, './pages/'),
       '#components': path.resolve(__dirname, './components/'),
       '#lib': path.resolve(__dirname, './lib/'),
