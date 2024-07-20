@@ -24,7 +24,7 @@ type UseToneValues = UseToneCallbacks & ToneContextValues & TransportStoreGetter
  */
 const useTone = () => {
   // the one and only invoke of useToneContext + useTransportStore
-  const { transport, tone, setMetronome, setTone, setTransport } = useInternalToneContext()
+  const { transport, tone, setTone, setTransport } = useInternalToneContext()
   const { setIsPlaying, setBpm, setTimeSignature, isPlaying, loopLength, bpm, timeSignature } =
     useInternalTransportStore()
 
@@ -58,7 +58,6 @@ const useTone = () => {
     (value: number) => {
       if (
         transport &&
-        setMetronome &&
         value &&
         value <= TRANSPORT_CONFIG.timeSignature.max &&
         value >= TRANSPORT_CONFIG.timeSignature.min
@@ -70,10 +69,9 @@ const useTone = () => {
         transport.timeSignature = value
         transport.loopEnd = `${loopLength}m`
         setTimeSignature(value)
-        setMetronome()
       }
     },
-    [handleStop, isPlaying, loopLength, setMetronome, setTimeSignature, transport],
+    [handleStop, isPlaying, loopLength, setTimeSignature, transport],
   )
 
   return {
@@ -85,7 +83,6 @@ const useTone = () => {
     timeSignature,
     setTransport,
     setTone,
-    setMetronome,
     handlePlay,
     handleStop,
     handleChangeBpm,

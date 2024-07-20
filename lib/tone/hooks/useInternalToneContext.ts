@@ -16,13 +16,12 @@ const useInternalToneContext = () => {
   const setTone = context?.setTone
   const transport = context?.transport
   const setTransport = context?.setTransport
-  const setMetronome = context?.setMetronome
 
   if (!context) {
     throw new Error('tone must be used within the ToneContextProvider')
   }
 
-  return { tone, setTone, transport, setTransport, setMetronome }
+  return { tone, setTone, transport, setTransport }
 }
 
 export default useInternalToneContext
