@@ -334,5 +334,6 @@ Additionally, we must clear all events on the transport and re-register them if 
 - Create an effect bus and display it on one of these pages
 - Create event bus, where events are automatically re-scheduled after transport time has changed
 - Add UI to clear metronome events
+- explain framwork-meta-header -> `HeadDefault.tsx`
 
 

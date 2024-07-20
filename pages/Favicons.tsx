@@ -1,6 +1,6 @@
 import { APP_CONFIG } from '#lib/constants'
 
-const Favicon = () => (
+const Favicons = () => (
   <>
     <meta
       name="msapplication-TileImage"
@@ -79,4 +79,4 @@ const Favicon = () => (
   </>
 )
 
-export default Favicon
+export default Favicons
