@@ -18,8 +18,7 @@
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "#tone/*": ["lib/tone/*"],
-      "#renderer/*": ["renderer/*"],
+      "#tone/*": ["tone/*"],
       "#pages/*": ["pages/*"],
       "#components/*": ["./components/*"],
       "#lib/*": ["./lib/*"],

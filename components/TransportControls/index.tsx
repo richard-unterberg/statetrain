@@ -1,36 +1,34 @@
 import { Play, Square } from 'lucide-react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import Button from '#components/common/Button'
 import ElementContainer from '#components/common/ElementContainer'
 import Layout from '#components/common/Layout'
 import TransportSettings from '#components/TransportControls/TransportSettings'
 import TransportVisualizer from '#components/TransportControls/TransportVisualizer'
+import useMetronome from '#tone/useMetronome'
 import useTone from '#tone/useTone'
+import useTransportChange from '#tone/useTransportChange'
 
 const TransportControl = () => {
-  const [currentPosition, setCurrentPosition] = useState(0)
-  const { isPlaying, loopLength, timeSignature, handlePlay, handleStop, setMetronome } = useTone()
+  const [currentPosition, setCurrentPosition] = useState<undefined | number>(undefined)
+  const { isPlaying, handlePlay, handleStop, tone, transport } = useTone()
 
-  // calculate the total length of the transport loop
-  const modifiedLoopAndSignature = useMemo(
-    () => loopLength * timeSignature - 1,
-    [loopLength, timeSignature],
-  )
+  // mount metronome with controls
+  const { setMetronome } = useMetronome({ tone, transport })
 
   const handlePlayButtonClick = useCallback(() => {
     if (isPlaying) {
       handleStop()
-      setCurrentPosition(modifiedLoopAndSignature)
+      setCurrentPosition(undefined)
     } else {
       handlePlay()
     }
-  }, [handlePlay, handleStop, isPlaying, modifiedLoopAndSignature])
+  }, [handlePlay, handleStop, isPlaying])
 
-  // setup metronome on mount - todo: overthink placement
-  useEffect(() => {
-    setMetronome?.()
-  }, [setMetronome])
+  useTransportChange({
+    registerEvent: setMetronome,
+  })
 
   return (
     <Layout className="mt-10 flex">
@@ -42,7 +40,6 @@ const TransportControl = () => {
           onClick={handlePlayButtonClick}
         />
         <TransportVisualizer
-          transportLength={modifiedLoopAndSignature}
           currentPosition={currentPosition}
           setCurrentPosition={setCurrentPosition}
         />

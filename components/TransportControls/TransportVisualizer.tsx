@@ -1,17 +1,16 @@
 import { CircleDashed, CircleX, Smile } from 'lucide-react'
-import { memo, useCallback, useEffect, useMemo, useRef } from 'react'
+import { memo, useCallback, useMemo, useRef } from 'react'
 
 import useTone from '#tone/useTone'
+import useTransportChange from '#tone/useTransportChange'
 
 const TransportVisualizer = memo(
   ({
     currentPosition,
     setCurrentPosition,
-    transportLength,
   }: {
-    currentPosition: number
-    transportLength: number
-    setCurrentPosition: React.Dispatch<React.SetStateAction<number>>
+    currentPosition: number | undefined
+    setCurrentPosition: React.Dispatch<React.SetStateAction<number | undefined>>
   }) => {
     const { transport, tone, loopLength, isPlaying, timeSignature } = useTone()
 
@@ -21,7 +20,12 @@ const TransportVisualizer = memo(
     const ticks = useMemo(() => Array.from({ length: timeSignature }, (_, i) => i), [timeSignature])
 
     const handleTick = useCallback(() => {
-      setCurrentPosition(prev => (prev + 1) % (loopLength * timeSignature))
+      setCurrentPosition(prev => {
+        if (prev === undefined) {
+          return 0
+        }
+        return (prev + 1) % (loopLength * timeSignature)
+      })
     }, [loopLength, setCurrentPosition, timeSignature])
 
     const clearTickEvent = useCallback(() => {
@@ -39,17 +43,13 @@ const TransportVisualizer = memo(
           handleTick()
         }, time)
       }, '4n')
-      setCurrentPosition(transportLength)
+      setCurrentPosition(undefined)
       tickEventId.current = tick
-    }, [clearTickEvent, handleTick, setCurrentPosition, tone, transport, transportLength])
+    }, [clearTickEvent, handleTick, setCurrentPosition, tone, transport])
 
-    // on Change of transportLength -> reset
-    useEffect(() => {
-      if (transportLength) {
-        setCurrentPosition(transportLength)
-        registerTickEvent()
-      }
-    }, [transportLength, registerTickEvent, setCurrentPosition])
+    useTransportChange({
+      registerEvent: registerTickEvent,
+    })
 
     return (
       <div className="flex flex-col items-stretch justify-between">

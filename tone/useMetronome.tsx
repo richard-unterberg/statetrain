@@ -1,18 +1,8 @@
-/**
- * INTERNAL HOOK
- * DO NOT IMPORT DIRECTLY - use useTone()
- */
 import { useCallback, useRef } from 'react'
 
 import { ToneType, TransportType } from '#lib/types'
 
-const useInternalContextMetronome = ({
-  tone,
-  transport,
-}: {
-  tone?: ToneType
-  transport?: TransportType
-}) => {
+const useMetronome = ({ tone, transport }: { tone?: ToneType; transport?: TransportType }) => {
   const metronomeMeasure = useRef<number | null>(null)
   const metronomeQuarterTick = useRef<number | null>(null)
 
@@ -51,4 +41,4 @@ const useInternalContextMetronome = ({
   } as const
 }
 
-export default useInternalContextMetronome
+export default useMetronome

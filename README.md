@@ -156,7 +156,6 @@ We use a [React context](https://react.dev/learn/passing-data-deeply-with-contex
 - `isPlaying` - play state of the transport
 
 #### Setters
-- `setMetronome` - clear and reset context metronome
 - `setTone` - set context tone instance (should be only set up once)
 - `setTransport` - set context transport instance (should be only set up once)
 
