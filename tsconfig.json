@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "module": "ESNext",
+    "noEmit": true,
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["vite/client", "vike-react"],
+    "jsx": "preserve",
+    "jsxImportSource": "react",
+    "baseUrl": ".",
+    "paths": {
+      "#tone/*": ["lib/tone/*"],
+      "#renderer/*": ["renderer/*"],
+      "#pages/*": ["pages/*"],
+      "#components/*": ["./components/*"],
+      "#lib/*": ["./lib/*"],
+      "#src/*": ["./src/*"],
+      "#root/*": ["./*"]
+    }
+  },
+  "exclude": [
+    "dist",
+    "*.js",
+    "*.cjs",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
+    "node_modules",
+    "public",
+    "dist"
+  ]
+}
