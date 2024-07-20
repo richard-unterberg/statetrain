@@ -4,17 +4,6 @@ import { defineConfig, presetUno } from 'unocss'
 
 export default defineConfig({
   presets: [presetUno()],
-  content: {
-    // needed for uno css to properly parse the content
-    pipeline: {
-      include: [
-        // the default
-        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
-        // include js/ts files
-        'src/**/*.{js,ts}',
-      ],
-    },
-  },
   theme: {
     colors: {
       transparent: 'transparent',
@@ -45,9 +34,11 @@ export default defineConfig({
       sans: 'Helvetica Neue, Arial, Tahoma, sans-serif',
     },
   },
+  // a good place to use the theme values directly
   preflights: [
     {
       // outputs the css variables for colors and font sizes
+      // assigns base font styles to html and body
       getCSS: ({ theme }) => {
         let cssVariables = ''
 
