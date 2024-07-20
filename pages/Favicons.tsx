@@ -26,12 +26,6 @@ const Favicons = () => (
       type="image/png"
     />
     <link
-      rel="icon"
-      href={`${APP_CONFIG.viteUrl}/favicon/favicon-192x192.png`}
-      sizes="192x192"
-      type="image/png"
-    />
-    <link
       rel="apple-touch-icon"
       href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-57x57.png`}
       sizes="57x57"
