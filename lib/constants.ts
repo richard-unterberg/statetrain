@@ -3,7 +3,7 @@ import { TransportConfigType } from '#lib/types'
 export const APP_CONFIG = {
   // if you are using a cdn or a subdirectory, you can set it here accordingly
   viteUrl: `${
-    import.meta.env.PROD ? 'http://localhost:4248' : 'http://localhost:5247'
+    import.meta.env.PROD ? 'https://richard-unterberg.github.io' : 'http://localhost:5247'
   }${import.meta.env.BASE_URL.slice(0, -1)}`,
 }
 
