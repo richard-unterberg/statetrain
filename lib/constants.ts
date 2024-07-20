@@ -6,7 +6,7 @@ export const APP_CONFIG = {
     import.meta.env.PROD ? 'https://richard-unterberg.github.io' : 'http://localhost:5247'
   }${import.meta.env.BASE_URL.slice(0, -1)}`,
   description:
-    'Gain control of the tone.js transport in a modern routable typescript-react environment. 🚂🚃',
+    'Gain control of the tone.js transport in a modern routable typescript-react environment.',
 }
 
 export const TRANSPORT_CONFIG: TransportConfigType = {
