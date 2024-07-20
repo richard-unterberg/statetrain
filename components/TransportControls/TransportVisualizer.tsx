@@ -1,8 +1,8 @@
 import { CircleDashed, CircleX, Smile } from 'lucide-react'
 import { memo, useCallback, useMemo, useRef } from 'react'
 
-import useTransportChange from '#tone/hooks/useTransportChange'
 import useTone from '#tone/useTone'
+import useTransportChange from '#tone/useTransportChange'
 
 const TransportVisualizer = memo(
   ({

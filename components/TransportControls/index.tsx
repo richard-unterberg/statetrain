@@ -6,13 +6,15 @@ import ElementContainer from '#components/common/ElementContainer'
 import Layout from '#components/common/Layout'
 import TransportSettings from '#components/TransportControls/TransportSettings'
 import TransportVisualizer from '#components/TransportControls/TransportVisualizer'
-import useMetronome from '#tone/hooks/useMetronome'
-import useTransportChange from '#tone/hooks/useTransportChange'
+import useMetronome from '#tone/useMetronome'
 import useTone from '#tone/useTone'
+import useTransportChange from '#tone/useTransportChange'
 
 const TransportControl = () => {
   const [currentPosition, setCurrentPosition] = useState<undefined | number>(undefined)
   const { isPlaying, handlePlay, handleStop, tone, transport } = useTone()
+
+  // mount metronome with controls
   const { setMetronome } = useMetronome({ tone, transport })
 
   const handlePlayButtonClick = useCallback(() => {
