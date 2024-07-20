@@ -188,7 +188,7 @@ plugins: [
   ],
 ```
 
-See the full ``vite.config.ts`` here (TODO: link to repo)
+See the full [vite.config.ts](https://github.com/richard-unterberg/statetrain/blob/master/vite.config.ts) here
 
 SSR users: [See this implementation guide](https://vike.dev/add)
 
@@ -211,7 +211,7 @@ See [all icons](https://lucide.dev/icons/)
 
 This application uses [uno.css](https://unocss.dev/) for more scalability and custom presets. The [tailwind-preset](https://unocss.dev/presets/wind) is active by default, which means you can rely on the classic Tailwind CSS syntax.
 
-To reduce "className-cluttering," we use [tailwind-styled-components](https://github.com/MathiasGilson/tailwind-styled-component).
+To reduce "className-cluttering" I used [tailwind-styled-components](https://github.com/MathiasGilson/tailwind-styled-component).
 
 For example, a simple button:
 
@@ -245,7 +245,7 @@ export default tw.div<LayoutTwProps>`
 `
 ```
 
-See the full uno.config.ts (TODO: link to repo)
+See the full [uno.config.ts](https://github.com/richard-unterberg/statetrain/blob/master/uno.config.ts)
 
 ## <a id="aliases"></a>Aliases
 
@@ -259,7 +259,7 @@ import Something from '#components/Something'
 
 We must set and keep it in sync for vite (``vite.config.ts``) and your IDE (``tsconfig.json``)
 
-``vite.config.ts``:
+[``vite.config.ts``](https://github.com/richard-unterberg/statetrain/blob/master/vite.config.ts):
 ```ts
 ...viteConfig,
 resolve: {
@@ -272,7 +272,7 @@ resolve: {
 },
   ```
 
-``tsconfig.json``:
+[``tsconfig.json``](https://github.com/richard-unterberg/statetrain/blob/master/tsconfig.json):
 ```json
 ...tsConfig,
 "paths": {
