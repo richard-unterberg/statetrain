@@ -1,6 +1,6 @@
 import { ReactNode, Suspense, useCallback, useMemo } from 'react'
 
-import Button from '#components/common/Button'
+import TonePortalContent from '#components/TonePortalContent'
 import useTone from '#tone/useTone'
 import { setTransportDefaults } from '#tone/utils'
 
@@ -29,22 +29,7 @@ const TonePortal = ({ children }: { children: ReactNode }) => {
     setTransport(toneTransport)
   }, [setTone, setTransport])
 
-  return (
-    toneMemo || (
-      <div className="flex justify-center">
-        <div className="mt-16 p-3">
-          <div className="text-5xl text-center mb-6">🚂🚃</div>
-          <div className="text-4xl text-center font-black mb-6">STATETRAIN</div>
-          <Button className="bg-successDark text-white w-full justify-center" onClick={handleClick}>
-            Initialize Tone.js / AudioContext
-          </Button>
-          <div className="text-sm mt-4 text-gray">
-            Unlock and maintain tone.js context for all following pages / components
-          </div>
-        </div>
-      </div>
-    )
-  )
+  return toneMemo || <TonePortalContent handleClick={handleClick} />
 }
 
 export default TonePortal

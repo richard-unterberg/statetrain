@@ -11,7 +11,7 @@ const Head = () => (
     <link rel="manifest" href={`${APP_CONFIG.viteUrl}/site.webmanifest`} />
     <meta
       name="description"
-      content="Gain control of tone.js' transport with a routable react-application"
+      content="Gain control of the tone.js transport with a modern routable typescript-react environment. 🚂🚃"
     />
   </>
 )
