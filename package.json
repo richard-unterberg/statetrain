@@ -1,10 +1,10 @@
 {
   "name": "richard-unterberg.github.io.git",
   "license": "MIT",
-  "author": "Richard Unterberg <https://github.com/richard-unterberg>",
+  "author": "Richard Unterberg <https://github.com/ -unterberg>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/richard-unterberg/unterberg.dev.git"
+    "url": "https://github.com/richard-unterberg/statetrain.git"
   },
   "private": true,
   "version": "0.1.1",
