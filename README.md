@@ -4,6 +4,10 @@
 
 For another project, I needed a routable TypeScript-React application with access to a shared [Tone.js](https://tonejs.github.io/) context. To test the code, I built a small metronome, which required a communication layer to and from the imperatively designed Tone.js library.
 
+## Still WIP
+
+Something is messing up the event registration. so every time isPlaying is changed the event is registered again. This is not the desired behavior. I will fix this as soon as possible.
+
 #### Features of this toolkit
 - Register Tone.js on a user interaction and put it and its transport into a React context.
 - Extensible custom hook to retrieve and control Tone-specific actions.

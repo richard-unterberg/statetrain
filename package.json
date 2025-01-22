@@ -11,7 +11,7 @@
   "type": "module",
   "scripts": {
     "prepare": "lefthook install",
-    "dev": "vike",
+    "dev": "vike dev",
     "prod": "vike build && vike preview",
     "build": "tsc && vike build",
     "preview": "vike preview",
