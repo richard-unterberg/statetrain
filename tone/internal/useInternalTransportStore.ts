@@ -2,9 +2,9 @@
  * INTERNAL HOOK
  * DO NOT IMPORT DIRECTLY - use useTone()
  */
-import { create } from 'zustand'
+import { create } from "zustand"
 
-import { TRANSPORT_CONFIG } from '#lib/constants'
+import { TRANSPORT_CONFIG } from "#lib/constants"
 
 export interface TransportStoreGetter {
   bpm: number
@@ -26,15 +26,15 @@ export type TransportStoreValues = TransportStoreGetter & TransportStoreSetter
  * @private
  * do not import directly - use useTone.ts
  */
-const useInternalTransportStore = create<TransportStoreValues>()(set => ({
+const useInternalTransportStore = create<TransportStoreValues>()((set) => ({
   bpm: TRANSPORT_CONFIG.bpm.default,
-  setBpm: payload => set(() => ({ bpm: payload })),
+  setBpm: (payload) => set(() => ({ bpm: payload })),
   timeSignature: TRANSPORT_CONFIG.timeSignature.default,
-  setTimeSignature: payload => set(() => ({ timeSignature: payload })),
+  setTimeSignature: (payload) => set(() => ({ timeSignature: payload })),
   loopLength: TRANSPORT_CONFIG.loopLength.default,
-  setLoopLength: payload => set(() => ({ loopLength: payload })),
+  setLoopLength: (payload) => set(() => ({ loopLength: payload })),
   isPlaying: TRANSPORT_CONFIG.isPlaying,
-  setIsPlaying: payload => set(() => ({ isPlaying: payload })),
+  setIsPlaying: (payload) => set(() => ({ isPlaying: payload })),
 }))
 
 export default useInternalTransportStore

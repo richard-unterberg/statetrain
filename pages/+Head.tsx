@@ -1,5 +1,5 @@
-import { APP_CONFIG } from '#lib/constants'
-import Favicons from '#pages/Favicons'
+import { APP_CONFIG } from "#lib/constants"
+import Favicons from "#pages/Favicons"
 
 const Head = () => (
   <>

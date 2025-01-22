@@ -1,5 +1,5 @@
-import { TRANSPORT_CONFIG } from '#lib/constants'
-import { TransportType } from '#lib/types'
+import { TRANSPORT_CONFIG } from "#lib/constants"
+import type { TransportType } from "#lib/types"
 
 export const setTransportDefaults = (transport: TransportType) => {
   transport.loop = TRANSPORT_CONFIG.loop.default

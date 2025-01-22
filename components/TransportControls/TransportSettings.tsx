@@ -1,5 +1,5 @@
-import NumberInput from '#components/form/NumberInput'
-import useTone from '#tone/useTone'
+import NumberInput from "#components/form/NumberInput"
+import useTone from "#tone/useTone"
 
 const TransportSettings = () => {
   const { bpm, timeSignature, handleChangeBpm, handleChangeTimeSignature } = useTone()

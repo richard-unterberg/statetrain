@@ -1,8 +1,9 @@
-import { Play, Square } from 'lucide-react'
-import React, { useCallback } from 'react'
+import { Play, Square } from "lucide-react"
+import type React from "react"
+import { useCallback } from "react"
 
-import Button from '#components/common/Button'
-import useTone from '#tone/useTone'
+import Button from "#components/common/Button"
+import useTone from "#tone/useTone"
 
 type InlinePlayButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   className?: string
@@ -21,7 +22,7 @@ const InlinePlayButton = ({ className, ...props }: InlinePlayButtonProps) => {
 
   return (
     <Button
-      className={`${isPlaying ? 'bg-warningDark' : 'bg-successDark animate-pulse'} ${className}`}
+      className={`${isPlaying ? "bg-warningDark" : "bg-successDark animate-pulse"} ${className}`}
       onClick={handlePlayButtonClick}
       icon={
         isPlaying ? (
@@ -32,7 +33,7 @@ const InlinePlayButton = ({ className, ...props }: InlinePlayButtonProps) => {
       }
       {...props}
     >
-      {isPlaying ? 'Stop' : 'Play'}
+      {isPlaying ? "Stop" : "Play"}
     </Button>
   )
 }

@@ -1,11 +1,11 @@
-import { useCallback } from 'react'
+import { useCallback } from "react"
 
-import { TRANSPORT_CONFIG } from '#lib/constants'
-import { ToneContextValues } from '#tone/context/ToneContextProvider'
-import useInternalToneContext from '#tone/internal/useInternalToneContext'
+import { TRANSPORT_CONFIG } from "#lib/constants"
+import type { ToneContextValues } from "#tone/context/ToneContextProvider"
+import useInternalToneContext from "#tone/internal/useInternalToneContext"
 import useInternalTransportStore, {
-  TransportStoreGetter,
-} from '#tone/internal/useInternalTransportStore'
+  type TransportStoreGetter,
+} from "#tone/internal/useInternalTransportStore"
 
 interface UseToneCallbacks {
   handlePlay: () => void

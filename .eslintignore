@@ -1,8 +1,0 @@
-node_modules
-dist
-.husky
-
-# JS files at the root of the project
-*.js
-*.cjs
-*.mjs

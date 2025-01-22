@@ -1,11 +1,8 @@
-import { APP_CONFIG } from '#lib/constants'
+import { APP_CONFIG } from "#lib/constants"
 
 const Favicons = () => (
   <>
-    <meta
-      name="msapplication-TileImage"
-      content={`${APP_CONFIG.viteUrl}/favicon/ms-icon-144x144.png`}
-    />
+    <meta name="msapplication-TileImage" content={`${APP_CONFIG.viteUrl}/favicon/ms-icon-144x144.png`} />
     <link rel="icon" href={`${APP_CONFIG.viteUrl}/favicon/favicon.ico`} sizes="32x32" />
     <link
       rel="icon"
@@ -25,26 +22,10 @@ const Favicons = () => (
       sizes="96x96"
       type="image/png"
     />
-    <link
-      rel="apple-touch-icon"
-      href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-57x57.png`}
-      sizes="57x57"
-    />
-    <link
-      rel="apple-touch-icon"
-      href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-60x60.png`}
-      sizes="60x60"
-    />
-    <link
-      rel="apple-touch-icon"
-      href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-72x72.png`}
-      sizes="72x72"
-    />
-    <link
-      rel="apple-touch-icon"
-      href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-76x76.png`}
-      sizes="76x76"
-    />
+    <link rel="apple-touch-icon" href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-57x57.png`} sizes="57x57" />
+    <link rel="apple-touch-icon" href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-60x60.png`} sizes="60x60" />
+    <link rel="apple-touch-icon" href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-72x72.png`} sizes="72x72" />
+    <link rel="apple-touch-icon" href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-76x76.png`} sizes="76x76" />
     <link
       rel="apple-touch-icon"
       href={`${APP_CONFIG.viteUrl}/favicon/apple-icon-114x114.png`}

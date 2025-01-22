@@ -1,8 +1,8 @@
-import { CircleDashed, CircleX, Smile } from 'lucide-react'
-import { memo, useCallback, useMemo, useRef } from 'react'
+import { CircleDashed, CircleX, Smile } from "lucide-react"
+import { memo, useCallback, useMemo, useRef } from "react"
 
-import useTone from '#tone/useTone'
-import useTransportChange from '#tone/useTransportChange'
+import useTone from "#tone/useTone"
+import useTransportChange from "#tone/useTransportChange"
 
 const TransportVisualizer = memo(
   ({
@@ -14,13 +14,13 @@ const TransportVisualizer = memo(
   }) => {
     const { transport, tone, loopLength, isPlaying, timeSignature } = useTone()
 
-    const tickEventId = useRef<number | undefined>()
+    const tickEventId = useRef<number | undefined>(undefined)
 
     const measures = useMemo(() => Array.from({ length: loopLength }, (_, i) => i), [loopLength])
     const ticks = useMemo(() => Array.from({ length: timeSignature }, (_, i) => i), [timeSignature])
 
     const handleTick = useCallback(() => {
-      setCurrentPosition(prev => {
+      setCurrentPosition((prev) => {
         if (prev === undefined) {
           return 0
         }
@@ -38,11 +38,11 @@ const TransportVisualizer = memo(
     const registerTickEvent = useCallback(() => {
       clearTickEvent()
 
-      const tick = transport?.scheduleRepeat(time => {
+      const tick = transport?.scheduleRepeat((time) => {
         tone?.getDraw()?.schedule(() => {
           handleTick()
         }, time)
-      }, '4n')
+      }, "4n")
       setCurrentPosition(undefined)
       tickEventId.current = tick
     }, [clearTickEvent, handleTick, setCurrentPosition, tone, transport])
@@ -53,9 +53,9 @@ const TransportVisualizer = memo(
 
     return (
       <div className="flex flex-col items-stretch justify-between">
-        {measures.map(measure => (
+        {measures.map((measure) => (
           <div key={measure} className="flex gap-1">
-            {ticks.map(tick => {
+            {ticks.map((tick) => {
               const isCurrentTick = currentPosition === measure * timeSignature + tick
               const isFirstTick = measure === 0 && tick === 0
               const isFirstMeasure = isCurrentTick && tick === 0
@@ -66,22 +66,20 @@ const TransportVisualizer = memo(
                     <>
                       <CircleDashed
                         strokeWidth={3}
-                        className={`text-errorDark ${isCurrentTick || isFirstMeasure ? 'hidden' : 'block'}`}
+                        className={`text-errorDark ${isCurrentTick || isFirstMeasure ? "hidden" : "block"}`}
                       />
                       <CircleX
                         strokeWidth={3}
-                        className={`text-warningLight ${isCurrentTick && !isFirstMeasure ? 'block' : 'hidden'}`}
+                        className={`text-warningLight ${isCurrentTick && !isFirstMeasure ? "block" : "hidden"}`}
                       />
                       <Smile
                         strokeWidth={4}
-                        className={`text-white ${isFirstMeasure ? 'block' : 'hidden'}`}
+                        className={`text-white ${isFirstMeasure ? "block" : "hidden"}`}
                       />
                     </>
                   )}
                   {!isPlaying && isFirstTick && <Smile strokeWidth={3} className="text-white" />}
-                  {!isPlaying && !isFirstTick && (
-                    <CircleDashed strokeWidth={3} className="text-errorDark" />
-                  )}
+                  {!isPlaying && !isFirstTick && <CircleDashed strokeWidth={3} className="text-errorDark" />}
                 </div>
               )
             })}

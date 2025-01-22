@@ -1,7 +1,7 @@
-import H4Headline from '#components/common/H4Headline'
-import Layout from '#components/common/Layout'
-import Link from '#components/common/Link'
-import InlinePlayButton from '#components/InlinePlayButton'
+import H4Headline from "#components/common/H4Headline"
+import Layout from "#components/common/Layout"
+import Link from "#components/common/Link"
+import InlinePlayButton from "#components/InlinePlayButton"
 
 // todo: the current implementation must be oursourced to a separate file out of the page context
 const StartPage = () => (

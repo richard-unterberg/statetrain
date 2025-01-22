@@ -1,5 +1,5 @@
-import type { Config } from 'vike/types'
+import type { Config } from "vike/types"
 
 export default {
-  title: 'Alternative Page | statetrain',
+  title: "Alternative Page | statetrain",
 } satisfies Config

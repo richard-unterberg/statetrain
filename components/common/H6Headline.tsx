@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components'
+import tw from "tailwind-styled-components"
 
 const H6Headline = tw.h6`
   text-lg

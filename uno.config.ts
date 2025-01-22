@@ -1,15 +1,15 @@
 // uno.config.ts
-import { colors } from '@unocss/preset-wind'
-import { defineConfig, presetUno } from 'unocss'
+import { colors } from "@unocss/preset-wind"
+import { defineConfig, presetUno } from "unocss"
 
 export default defineConfig({
   presets: [presetUno()],
   theme: {
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      black: '#000',
-      white: '#fff',
+      transparent: "transparent",
+      current: "currentColor",
+      black: "#000",
+      white: "#fff",
       dark: colors.slate[950], // '#020617'
       darkLight: colors.slate[900],
       darkLightBorder: colors.slate[800],
@@ -26,12 +26,12 @@ export default defineConfig({
       errorLight: colors.red[300],
     },
     fontSize: {
-      base: ['16px', '24px'],
-      small: ['14px', '20px'],
-      micro: ['10px', '12px'],
+      base: ["16px", "24px"],
+      small: ["14px", "20px"],
+      micro: ["10px", "12px"],
     },
     fontFamily: {
-      sans: 'Helvetica Neue, Arial, Tahoma, sans-serif',
+      sans: "Helvetica Neue, Arial, Tahoma, sans-serif",
     },
   },
   // a good place to use the theme values directly
@@ -40,22 +40,22 @@ export default defineConfig({
       // outputs the css variables for colors and font sizes
       // assigns base font styles to html and body
       getCSS: ({ theme }) => {
-        let cssVariables = ''
+        let cssVariables = ""
 
         if (theme.colors) {
-          Object.keys(theme.colors).forEach(color => {
-            if (typeof theme.colors?.[color] === 'string') {
+          for (const color of Object.keys(theme.colors)) {
+            if (typeof theme.colors?.[color] === "string") {
               cssVariables += `--color-${color}: ${theme.colors?.[color]};\n`
             }
-          })
+          }
         }
 
         if (theme.fontSize) {
-          Object.keys(theme.fontSize).forEach(size => {
+          for (const size of Object.keys(theme.fontSize)) {
             if (Array.isArray(theme.fontSize?.[size])) {
               cssVariables += `--font-size-${size}: ${theme.fontSize?.[size][0]};\n`
             }
-          })
+          }
         }
 
         return `

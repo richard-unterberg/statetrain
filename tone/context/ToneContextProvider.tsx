@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useMemo, useState } from 'react'
+import { createContext, type ReactNode, useMemo, useState } from "react"
 
-import { ToneType, TransportType } from '#lib/types'
+import type { ToneType, TransportType } from "#lib/types"
 
 export interface ToneContextGetter {
   tone: ToneType | undefined
@@ -20,10 +20,7 @@ const ToneContextProvider = ({ children }: { children: ReactNode }) => {
   const [tone, setTone] = useState<ToneType | undefined>()
   const [transport, setTransport] = useState<TransportType | undefined>()
 
-  const toneContextValue = useMemo(
-    () => ({ tone, setTone, transport, setTransport }),
-    [tone, transport],
-  )
+  const toneContextValue = useMemo(() => ({ tone, setTone, transport, setTransport }), [tone, transport])
 
   return <ToneContext.Provider value={toneContextValue}>{children}</ToneContext.Provider>
 }

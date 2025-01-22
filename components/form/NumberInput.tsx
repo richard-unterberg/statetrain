@@ -1,8 +1,8 @@
-import { ReactNode } from 'react'
-import tw from 'tailwind-styled-components'
+import type { ReactNode } from "react"
+import tw from "tailwind-styled-components"
 
 interface StyledToggleButtonProps {
-  $pos: 'left' | 'right'
+  $pos: "left" | "right"
 }
 
 const StyledToggleButton = tw.button<StyledToggleButtonProps>`
@@ -17,7 +17,7 @@ const StyledToggleButton = tw.button<StyledToggleButtonProps>`
   font-bold
   justify-center
   h-full
-  ${p => (p.$pos === 'left' ? 'rounded-s-lg' : 'rounded-e-lg')}
+  ${(p) => (p.$pos === "left" ? "rounded-s-lg" : "rounded-e-lg")}
 `
 
 const StyledNumberInput = tw.input`
@@ -46,9 +46,7 @@ interface NumberInputProps {
 
 const NumberInput = ({ onIncrease, onDecrease, value, label }: NumberInputProps) => (
   <div className="flex justify-between items-center gap-2 items-stretch flex-1">
-    <div className="whitespace-nowrap text-sm flex flex-col items-center justify-center">
-      {label}
-    </div>
+    <div className="whitespace-nowrap text-sm flex flex-col items-center justify-center">{label}</div>
     <div className="relative flex items-center max-w-24">
       <StyledToggleButton $pos="left" type="button" onClick={onDecrease} aria-label="Decrement">
         -

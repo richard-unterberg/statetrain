@@ -1,6 +1,6 @@
-import { useCallback, useRef } from 'react'
+import { useCallback, useRef } from "react"
 
-import { ToneType, TransportType } from '#lib/types'
+import type { ToneType, TransportType } from "#lib/types"
 
 const useMetronome = ({ tone, transport }: { tone?: ToneType; transport?: TransportType }) => {
   const metronomeMeasure = useRef<number | null>(null)
@@ -24,15 +24,15 @@ const useMetronome = ({ tone, transport }: { tone?: ToneType; transport?: Transp
     clearMetronome()
 
     const synth = new tone.Synth().toDestination()
-    const measure = transport.scheduleRepeat(time => {
-      synth.triggerAttackRelease('C5', '64n', time)
-    }, '1m')
+    const measure = transport.scheduleRepeat((time) => {
+      synth.triggerAttackRelease("C5", "64n", time)
+    }, "1m")
     metronomeMeasure.current = measure
 
     const synth2 = new tone.Synth().toDestination()
-    const quarter = transport.scheduleRepeat(time => {
-      synth2.triggerAttackRelease('C4', '64n', time)
-    }, '4n')
+    const quarter = transport.scheduleRepeat((time) => {
+      synth2.triggerAttackRelease("C4", "64n", time)
+    }, "4n")
     metronomeQuarterTick.current = quarter
   }, [clearMetronome, tone, transport])
 

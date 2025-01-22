@@ -1,7 +1,7 @@
 // type definitions for the whole app
 
-import * as Tone from 'tone'
-import { TransportClass } from 'tone/build/esm/core/clock/Transport'
+import type * as Tone from "tone"
+import type { TransportClass } from "tone/build/esm/core/clock/Transport"
 
 // convinient types for the Tone.js context
 export type ToneType = typeof Tone

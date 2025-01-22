@@ -1,4 +1,4 @@
-import tw from 'tailwind-styled-components'
+import tw from "tailwind-styled-components"
 
 const H4Headline = tw.h4`
   text-2xl

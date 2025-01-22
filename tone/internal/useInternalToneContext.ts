@@ -2,9 +2,9 @@
  * INTERNAL HOOK
  * DO NOT IMPORT DIRECTLY - use useTone()
  */
-import { useContext } from 'react'
+import { useContext } from "react"
 
-import { ToneContext } from '#tone/context/ToneContextProvider'
+import { ToneContext } from "#tone/context/ToneContextProvider"
 
 /**
  * @private
@@ -18,7 +18,7 @@ const useInternalToneContext = () => {
   const setTransport = context?.setTransport
 
   if (!context) {
-    throw new Error('tone must be used within the ToneContextProvider')
+    throw new Error("tone must be used within the ToneContextProvider")
   }
 
   return { tone, setTone, transport, setTransport }

@@ -1,8 +1,8 @@
-import { ReactNode, Suspense, useCallback, useMemo } from 'react'
+import { type ReactNode, Suspense, useCallback, useMemo } from "react"
 
-import TonePortalContent from '#components/TonePortalContent'
-import useTone from '#tone/useTone'
-import { setTransportDefaults } from '#tone/utils'
+import TonePortalContent from "#components/TonePortalContent"
+import useTone from "#tone/useTone"
+import { setTransportDefaults } from "#tone/utils"
 
 /**
  * This Portal is placed before tone.js is initialized and must be submitted before user can enter any of page-routed contents.
@@ -18,7 +18,7 @@ const TonePortal = ({ children }: { children: ReactNode }) => {
     if (!setTone || !setTransport) return
 
     // async import
-    const toneModule = await import('tone')
+    const toneModule = await import("tone")
 
     // get transport once & setting defaults
     const toneTransport = toneModule.getTransport()

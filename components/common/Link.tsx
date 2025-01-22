@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { usePageContext } from 'vike-react/usePageContext'
+import { useMemo } from "react"
+import { usePageContext } from "vike-react/usePageContext"
 
 interface LinkProps {
   href: string
@@ -9,18 +9,18 @@ interface LinkProps {
   button?: boolean
 }
 
-const Link = ({ href, children, label, className = '', button }: LinkProps) => {
+const Link = ({ href, children, label, className = "", button }: LinkProps) => {
   const pageContext = usePageContext()
   const { urlPathname } = pageContext
 
   // clean up href and pathname
-  const hrefWithoutSlashes = href.replace(/^\/|\/$/g, '')
-  const pathnameWithoutSlashes = urlPathname.replace(/^\/|\/$/g, '')
+  const hrefWithoutSlashes = href.replace(/^\/|\/$/g, "")
+  const pathnameWithoutSlashes = urlPathname.replace(/^\/|\/$/g, "")
 
-  const isAnchorLink = hrefWithoutSlashes.startsWith('#')
+  const isAnchorLink = hrefWithoutSlashes.startsWith("#")
 
   const isExternal = useMemo(() => {
-    if (hrefWithoutSlashes.startsWith('http') || hrefWithoutSlashes.startsWith('mailto')) {
+    if (hrefWithoutSlashes.startsWith("http") || hrefWithoutSlashes.startsWith("mailto")) {
       return true
     }
 
@@ -29,7 +29,7 @@ const Link = ({ href, children, label, className = '', button }: LinkProps) => {
 
   const isActive = useMemo(
     () =>
-      hrefWithoutSlashes === ''
+      hrefWithoutSlashes === ""
         ? pathnameWithoutSlashes === hrefWithoutSlashes
         : pathnameWithoutSlashes.startsWith(hrefWithoutSlashes),
     [hrefWithoutSlashes, pathnameWithoutSlashes],
@@ -37,21 +37,19 @@ const Link = ({ href, children, label, className = '', button }: LinkProps) => {
 
   const generatedClassName = useMemo(() => {
     const staticClassName =
-      'transition-colors text-primary duration-200 ease-in-out inline-block hover:underline underline'
+      "transition-colors text-primary duration-200 ease-in-out inline-block hover:underline underline"
 
     if (button) {
       return `${
-        isActive
-          ? 'bg-primary pointer-events-none'
-          : 'bg-warningLight bg-opacity-50 hover:bg-opacity-75'
+        isActive ? "bg-primary pointer-events-none" : "bg-warningLight bg-opacity-50 hover:bg-opacity-75"
       } p-3 ${className} ${staticClassName} `
     }
 
-    return `${isActive ? 'text-warningLight ' : ''} ${className} ${staticClassName}`
+    return `${isActive ? "text-warningLight " : ""} ${className} ${staticClassName}`
   }, [button, className, isActive])
 
   const linkCheckedExternal = useMemo(
-    () => `${!isExternal ? `${import.meta.env.BASE_URL}` : ''}${href}`,
+    () => `${!isExternal ? `${import.meta.env.BASE_URL}` : ""}${href}`,
     [href, isExternal],
   )
 
@@ -59,9 +57,9 @@ const Link = ({ href, children, label, className = '', button }: LinkProps) => {
     <a
       href={isAnchorLink ? href : linkCheckedExternal}
       className={generatedClassName}
-      target={isExternal ? '_blank' : '_self'}
-      rel={isExternal ? 'noreferrer' : ''}
-      aria-label={label || ''}
+      target={isExternal ? "_blank" : "_self"}
+      rel={isExternal ? "noreferrer" : ""}
+      aria-label={label || ""}
     >
       {children}
     </a>

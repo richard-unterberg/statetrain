@@ -26,15 +26,5 @@
       "#root/*": ["./*"]
     }
   },
-  "exclude": [
-    "dist",
-    "*.js",
-    "*.cjs",
-    "**/*.js",
-    "**/*.cjs",
-    "**/*.mjs",
-    "node_modules",
-    "public",
-    "dist"
-  ]
+  "exclude": ["dist", "*.js", "*.cjs", "**/*.js", "**/*.cjs", "**/*.mjs", "node_modules", "public", "dist"]
 }

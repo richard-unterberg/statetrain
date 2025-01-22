@@ -1,5 +1,5 @@
-import Layout from '#components/common/Layout'
-import Link from '#components/common/Link'
+import Layout from "#components/common/Layout"
+import Link from "#components/common/Link"
 
 const ErrorPage = ({ is404, errorInfo }: { is404: boolean; errorInfo?: string }) => (
   <Layout className="mt-20">

@@ -1,14 +1,14 @@
-import { Play, Square } from 'lucide-react'
-import { useCallback, useState } from 'react'
+import { Play, Square } from "lucide-react"
+import { useCallback, useState } from "react"
 
-import Button from '#components/common/Button'
-import ElementContainer from '#components/common/ElementContainer'
-import Layout from '#components/common/Layout'
-import TransportSettings from '#components/TransportControls/TransportSettings'
-import TransportVisualizer from '#components/TransportControls/TransportVisualizer'
-import useMetronome from '#tone/useMetronome'
-import useTone from '#tone/useTone'
-import useTransportChange from '#tone/useTransportChange'
+import Button from "#components/common/Button"
+import ElementContainer from "#components/common/ElementContainer"
+import Layout from "#components/common/Layout"
+import TransportSettings from "#components/TransportControls/TransportSettings"
+import TransportVisualizer from "#components/TransportControls/TransportVisualizer"
+import useMetronome from "#tone/useMetronome"
+import useTone from "#tone/useTone"
+import useTransportChange from "#tone/useTransportChange"
 
 const TransportControl = () => {
   const [currentPosition, setCurrentPosition] = useState<undefined | number>(undefined)
@@ -36,13 +36,10 @@ const TransportControl = () => {
         <TransportSettings />
         <Button
           icon={isPlaying ? <Square className="w-10 h-10" /> : <Play className="w-10 h-10" />}
-          className={` ${isPlaying ? 'bg-warningDark' : ' bg-successDark'}`}
+          className={` ${isPlaying ? "bg-warningDark" : " bg-successDark"}`}
           onClick={handlePlayButtonClick}
         />
-        <TransportVisualizer
-          currentPosition={currentPosition}
-          setCurrentPosition={setCurrentPosition}
-        />
+        <TransportVisualizer currentPosition={currentPosition} setCurrentPosition={setCurrentPosition} />
       </ElementContainer>
     </Layout>
   )

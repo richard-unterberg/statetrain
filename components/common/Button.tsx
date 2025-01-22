@@ -1,4 +1,4 @@
-import { MutableRefObject, useMemo } from 'react'
+import { type MutableRefObject, useMemo } from "react"
 
 interface ButtonProps extends React.HTMLAttributes<HTMLAnchorElement | HTMLButtonElement> {
   children?: React.ReactNode
@@ -13,7 +13,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLAnchorElement | HTMLButto
 
 const Button = ({
   children,
-  label = 'Button',
+  label = "Button",
   icon,
   link,
   noGutter,
@@ -23,7 +23,7 @@ const Button = ({
   className,
 }: ButtonProps) => {
   const buttonStyle = useMemo(
-    () => `flex items-center ${noGutter ? 'p-0' : 'px-4 py-2'} rounded-sm gap-2 ${className}`,
+    () => `flex items-center ${noGutter ? "p-0" : "px-4 py-2"} rounded-sm gap-2 ${className}`,
     [className, noGutter],
   )
 
