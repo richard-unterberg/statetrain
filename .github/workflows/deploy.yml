@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Documentation
 
 on:
   push:
@@ -6,41 +6,24 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
+        with:
+          node-version: "18"
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Install Dependencies
+        run: npm ci
 
-      - name: Build project
+      - name: Build Documentation
         run: npm run build
-
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
-        with:
-          name: production-files
-          path: ./dist/client
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
