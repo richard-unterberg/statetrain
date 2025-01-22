@@ -6,8 +6,9 @@ const useMetronome = ({ tone, transport }: { tone?: ToneType; transport?: Transp
   const metronomeMeasure = useRef<number | null>(null)
   const metronomeQuarterTick = useRef<number | null>(null)
 
-  const clearMetronome = useCallback(() => {
+  const clearSetMetronome = useCallback(() => {
     if (!tone || !transport) return
+    console.log("clearSetMetronome")
 
     if (metronomeMeasure.current !== null) {
       transport.clear(metronomeMeasure.current)
@@ -17,11 +18,6 @@ const useMetronome = ({ tone, transport }: { tone?: ToneType; transport?: Transp
       transport.clear(metronomeQuarterTick.current)
       metronomeQuarterTick.current = null
     }
-  }, [tone, transport])
-
-  const setMetronome = useCallback(() => {
-    if (!tone || !transport) return
-    clearMetronome()
 
     const synth = new tone.Synth().toDestination()
     const measure = transport.scheduleRepeat((time) => {
@@ -34,10 +30,13 @@ const useMetronome = ({ tone, transport }: { tone?: ToneType; transport?: Transp
       synth2.triggerAttackRelease("C4", "64n", time)
     }, "4n")
     metronomeQuarterTick.current = quarter
-  }, [clearMetronome, tone, transport])
+
+    console.log(metronomeMeasure.current)
+    console.log(metronomeQuarterTick.current)
+  }, [tone, transport])
 
   return {
-    setMetronome,
+    clearSetMetronome,
   } as const
 }
 

@@ -12,16 +12,12 @@ import { ToneContext } from "#tone/context/ToneContextProvider"
  */
 const useInternalToneContext = () => {
   const context = useContext(ToneContext)
-  const tone = context?.tone
-  const setTone = context?.setTone
-  const transport = context?.transport
-  const setTransport = context?.setTransport
 
   if (!context) {
     throw new Error("tone must be used within the ToneContextProvider")
   }
 
-  return { tone, setTone, transport, setTransport }
+  return { tone: context?.tone, setTone: context?.setTone }
 }
 
 export default useInternalToneContext

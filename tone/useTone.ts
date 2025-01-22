@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 
 import { TRANSPORT_CONFIG } from "#lib/constants"
 import type { ToneContextValues } from "#tone/context/ToneContextProvider"
@@ -6,6 +6,8 @@ import useInternalToneContext from "#tone/internal/useInternalToneContext"
 import useInternalTransportStore, {
   type TransportStoreGetter,
 } from "#tone/internal/useInternalTransportStore"
+import useInternalTransportContext from "#tone/internal/useInternalTransportContext"
+import type { TransportContextValues } from "#tone/context/TransportContextProvider"
 
 interface UseToneCallbacks {
   handlePlay: () => void
@@ -15,7 +17,7 @@ interface UseToneCallbacks {
 }
 
 // intersection of tone context member functions and Zustand getters (setters are only used internally in this hook)
-type UseToneValues = UseToneCallbacks & ToneContextValues & TransportStoreGetter
+type UseToneValues = UseToneCallbacks & ToneContextValues & TransportContextValues & TransportStoreGetter
 
 /**
  * Custom hook for managing tone and transport settings.
@@ -24,21 +26,39 @@ type UseToneValues = UseToneCallbacks & ToneContextValues & TransportStoreGetter
  */
 const useTone = () => {
   // the one and only invoke of useToneContext + useTransportStore
-  const { transport, tone, setTone, setTransport } = useInternalToneContext()
-  const { setIsPlaying, setBpm, setTimeSignature, isPlaying, loopLength, bpm, timeSignature } =
-    useInternalTransportStore()
+  const { tone, setTone } = useInternalToneContext()
+  const { transport, setTransport } = useInternalTransportContext()
+  const setIsPlaying = useInternalTransportStore((state) => state.setIsPlaying)
+  const setBpm = useInternalTransportStore((state) => state.setBpm)
+  const setTimeSignature = useInternalTransportStore((state) => state.setTimeSignature)
+  const isPlaying = useInternalTransportStore((state) => state.isPlaying)
+  const loopLength = useInternalTransportStore((state) => state.loopLength)
+  const bpm = useInternalTransportStore((state) => state.bpm)
+  const timeSignature = useInternalTransportStore((state) => state.timeSignature)
 
   /** starts the transport and sets UI state */
   const handlePlay = useCallback(() => {
-    transport?.start()
+    if (transport) {
+      transport.position = "0:0:0"
+      transport?.start()
+    }
     setIsPlaying(true)
   }, [setIsPlaying, transport])
 
   /** stops the transport and sets UI state */
   const handleStop = useCallback(() => {
-    transport?.stop()
+    console.log("here we stop usually")
+
+    if (transport && transport.state === "started") {
+      transport.stop()
+      transport.position = "0:0:0"
+    }
     setIsPlaying(false)
-  }, [setIsPlaying, transport])
+  }, [transport, setIsPlaying])
+
+  useEffect(() => {
+    console.log(transport)
+  }, [transport])
 
   /** change transport bpm and sets UI state */
   const handleChangeBpm = useCallback(
@@ -62,16 +82,14 @@ const useTone = () => {
         value <= TRANSPORT_CONFIG.timeSignature.max &&
         value >= TRANSPORT_CONFIG.timeSignature.min
       ) {
-        if (isPlaying) {
-          handleStop()
-        }
+        handleStop()
 
         transport.timeSignature = value
         transport.loopEnd = `${loopLength}m`
         setTimeSignature(value)
       }
     },
-    [handleStop, isPlaying, loopLength, setTimeSignature, transport],
+    [handleStop, loopLength, setTimeSignature, transport],
   )
 
   return {

@@ -1,5 +1,5 @@
 import { Play, Square } from "lucide-react"
-import { useCallback, useState } from "react"
+import { useCallback } from "react"
 
 import Button from "#components/common/Button"
 import ElementContainer from "#components/common/ElementContainer"
@@ -11,23 +11,21 @@ import useTone from "#tone/useTone"
 import useTransportChange from "#tone/useTransportChange"
 
 const TransportControl = () => {
-  const [currentPosition, setCurrentPosition] = useState<undefined | number>(undefined)
   const { isPlaying, handlePlay, handleStop, tone, transport } = useTone()
 
   // mount metronome with controls
-  const { setMetronome } = useMetronome({ tone, transport })
+  const { clearSetMetronome } = useMetronome({ tone, transport })
 
   const handlePlayButtonClick = useCallback(() => {
     if (isPlaying) {
       handleStop()
-      setCurrentPosition(undefined)
     } else {
       handlePlay()
     }
   }, [handlePlay, handleStop, isPlaying])
 
   useTransportChange({
-    registerEvent: setMetronome,
+    registerEvent: clearSetMetronome,
   })
 
   return (
@@ -39,7 +37,7 @@ const TransportControl = () => {
           className={` ${isPlaying ? "bg-warningDark" : " bg-successDark"}`}
           onClick={handlePlayButtonClick}
         />
-        <TransportVisualizer currentPosition={currentPosition} setCurrentPosition={setCurrentPosition} />
+        <TransportVisualizer />
       </ElementContainer>
     </Layout>
   )
