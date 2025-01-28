@@ -1,3 +1,9 @@
+# This repo is outdated - pls use [this](https://github.com/unterberg-dev/statetrain) for extended control and usage:
+
+## ➡️➡️➡️➡️ [https://github.com/unterberg-dev/statetrain](https://github.com/unterberg-dev/statetrain) ⬅️⬅️⬅️⬅️
+
+### Make sure u read the above 😅⬆️
+
 # statetrain 🚂🚃
 ## Gain control of Tone.js' transport with a routable React application.
 ### Written in [TypeScript](https://www.typescriptlang.org/), bundled with [Vite](https://vitejs.dev/).
